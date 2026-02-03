@@ -58,10 +58,12 @@
                 return;
             }
             const END_TIME = player.getAttribute("end-time");
+            const START_TIME = player.getAttribute("start-time");
             player.addEventListener('timeupdate', (event) => {
-                    if (player.currentTime >= END_TIME) {
-                        player.pause(); // maybe stop is better?
-                    }
+                if (player.currentTime >= END_TIME) {
+                    player.pause();
+                    player.currentTime = START_TIME; // reset to start time so that user can play again
+                }
             });
         });
     </script>
