@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample HTML Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/@mux/mux-player"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #fafafa;
+        }
+        mux-player {
+            width: 640px;
+            height: 360px;
+            display: block;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Mux Player Timeupdate Event Demo</h2>
+
+    <h3>Video 1 start: 15.0, end: 31.0</h3>
+    <mux-player
+        playback-id="ey1dh6saxv01kYIpwUOcYcnCgZbVaqKJLm7v902ogig6k"
+        start-time="15.0"
+        end-time="31.0"
+    ></mux-player>
+
+    <h3>Video 2 start: 25.0, end: 41.0</h3>
+    <mux-player
+        playback-id="H3Hll9qbyHGrQ7yosLJ8uKELaVCXYsYvqt02VM9GTWZM"
+        start-time="25.0"
+        end-time="41.0"
+    ></mux-player>
+
+    <h3>Video 3 start: 95.0, end: 131.0</h3>
+    <mux-player
+        playback-id="g02BMl4V5UsuAkCVhU02ORahHfvL9LKlCsjNrQf02EflFg"
+        start-time="95.0"
+        end-time="131.0"
+    ></mux-player>
+
+    <h3>Video 4 start: 151.0, end: 181.0</h3>
+    <mux-player
+        playback-id="lH7fJjZn9FHfURdzDz7Tf3N5XpkApKaHYReWm4ve02BA"
+        start-time="151.0"
+        end-time="181.0"
+    ></mux-player>
+å
+
+    <script>
+        // loop through all mux-player elements and add timeupdate event listeners
+        document.querySelectorAll('mux-player').forEach(player => {
+            // if player doesn't have attribute end-time skip it
+            if (!player.hasAttribute("end-time")) {
+                return;
+            }
+            const END_TIME = player.getAttribute("end-time");
+            player.addEventListener('timeupdate', (event) => {
+                    if (player.currentTime >= END_TIME) {
+                        player.pause();
+                    }
+            });
+        });
+    </script>
+
+</body>
+</html>
