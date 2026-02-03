@@ -60,7 +60,7 @@
             const END_TIME = player.getAttribute("end-time");
             player.addEventListener('timeupdate', (event) => {
                     if (player.currentTime >= END_TIME) {
-                        player.pause();
+                        player.pause(); // maybe stop is better?
                     }
             });
         });
